@@ -1,0 +1,166 @@
+.slider-container {
+    position: relative;
+    width:100%;
+    height:300px;
+}
+
+.arrow {
+    position: absolute;
+    top:-100px;
+    cursor: pointer;
+    z-index:4;
+    color:#A8A8A8;
+}
+.arrow:hover {
+    color:#141515;
+}
+
+.right-arrow {
+    right:0;
+}
+
+.left-arrow {
+    right:6%;
+}
+
+.comment-slide {
+    position: relative;
+    max-width: 716px;
+    margin-top:121px;
+    margin-left:289px;
+}
+
+.comment-pic1 {
+    position: absolute;
+    top:-70px;
+    left:-84px;
+    z-index:-1;
+}
+
+.comment-pic1-2 {
+    display: none;
+    position: absolute;
+    top:-70px;
+    left:-84px;
+    z-index:-1;
+}
+
+.comment-pic2 {
+    position: absolute;
+    bottom:-35%;
+    right:0;
+    z-index:-1;
+}
+
+.comment-pic2-1 {
+    display: none;
+    position: absolute;
+    bottom:-35%;
+    right:0;
+    z-index:-1;
+}
+
+.paragraph1 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    line-height:32px;
+    color:#141515;
+}
+
+.profile-container {
+    margin-top:40px;
+    display: flex;
+    align-items: center;
+    gap:12px;
+}
+
+.profile-pic {
+    width:50px;
+    height:50px;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+.h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 24px;
+    line-height:32px;
+    color:#141515;
+    margin:0;
+}
+
+.paragraph2 {
+    margin-top:5px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    line-height:24px;
+    color:#514C3B;
+}
+
+@media screen and (max-width:420px) {
+
+    .arrow {
+        top:400px;
+    }
+    
+    .right-arrow {
+        right:100px;
+    }
+    
+    .left-arrow {
+        right:200px;
+    }
+    
+    .comment-slide {
+        position: relative;
+        max-width: 100%;
+        margin-top:89px;
+        margin-left:0;
+    }
+    
+    .comment-pic1 {
+        display: none;
+    }
+
+    .comment-pic1-2 {
+        display: block;
+        position: absolute;
+        top:-40px;
+        left:-10px;
+        z-index:-1;
+    }
+    
+    .comment-pic2 {
+        display: none;
+    }
+    
+    .comment-pic2-1 {
+        display: block;
+        position: absolute;
+        bottom:-600px;
+        right:0;
+        z-index:-1;
+    }
+    
+    .paragraph1 {
+        font-size: 20px;
+        line-height:26px;
+    }
+    
+    .profile-container {
+        margin-top:36px;
+        display: flex;
+        align-items: center;
+        gap:12px;
+    }
+    
+    .h3 {
+        font-size: 20px;
+        line-height:26px;
+    }
+    
+    .paragraph2 {
+        font-size: 16px;
+        line-height:2px;
+    }
+}

@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+.faq-title3 {
+    font-size: 24px;
+    line-height: 28px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    color:#141515;
+    margin-bottom: 12px;
+}
+
+.paragraph {
+    font-size: 18px;
+    line-height: 24px;
+    color: #514C3B;
+    font-family: 'Work Sans', sans-serif;
+}
+
+@media screen and (max-width:420px) {
+    .faq-title3 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    
+    .paragraph {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}

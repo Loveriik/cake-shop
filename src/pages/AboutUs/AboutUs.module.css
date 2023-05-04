@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+/*? General classes */
+
+.title2 {
+    font-size:84px;
+    line-height:92px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size:18px;
+    line-height:24px;
+    color:#514C3B;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/*! Section1 */
+
+.section1 {
+    margin-top:141px;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-container {
+    max-width:600px;
+}
+
+.text-container p:first-of-type {
+    margin: 24px 0;
+}
+
+.image-container {
+    display: flex;
+    gap:20px;
+}
+
+.imgWrapper img {
+    width:100%;
+}
+
+/*! Section2 */
+
+.section2 {
+    position: relative;
+    margin-top:141px;
+    padding: 115px 100px;
+    display: flex;
+    gap:87px;
+    align-items: center;
+}
+
+.deskWave {
+    position: absolute;
+    top:-200px;
+    left:0;
+    z-index:-1;
+}
+
+.mobWave {
+    display: none;
+}
+
+.section2-img {
+    width:100%;
+}
+
+.list-container {
+    flex:1;
+}
+
+.list-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listDot {
+    position: relative;
+}
+
+.listDot::before {
+    content: '';
+    position: absolute;
+    width:14px;
+    height:14px;
+    border-radius: 10px;
+    background-color: #FCD303;
+    top:25%;
+    left:-24px;
+}
+
+.listDot p {
+    margin-top:12px;
+    max-width:359px;
+}
+
+.border {
+    margin-top:40px;
+    border-bottom: 1px solid #E3E1DC;
+}
+
+.list-container .list-block:not(:first-child) {
+    margin-top:40px;
+}
+
+/*! Section3 */
+
+.section3 {
+    position: relative;
+}
+
+.mobWave2 {
+    display: none;
+}
+
+.inclined-wave {
+    display: none;
+}
+
+.final-wave {
+    display: none;
+}
+
+
+@media screen and (max-width:420px) {
+
+    /* General */
+
+    .about-margin {
+        margin-top:140px;
+    }
+
+    .title2 {
+        font-size:40px;
+        line-height:44px;
+    }
+    
+    .paragraph {
+        font-size:16px;
+        line-height:22px;
+    }
+
+    /*? Section1 */
+
+    .section1 {
+        margin-top:62px;
+        padding: 0 20px;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .text-container {
+        max-width:100%;
+    }
+        
+    .image-container {
+        gap:10px;
+    }
+
+    /*? Section2 */
+
+    .section2 {
+        padding: 0 20px;
+        display: flex;
+        gap:40px;
+        flex-direction: column-reverse;
+    }
+
+    .deskWave {
+        display: none;
+    }
+    
+    .mobWave {
+        display: block;
+        position: absolute;
+        bottom:-160px;
+        left:0;
+        z-index:-1;
+    }
+    
+    .listDot::before {
+        width:0;
+        height:0;
+    }
+
+    /*? Section3 */
+
+    .inclined-wave {
+        display: block;
+    }
+
+    .inclined-wave img {
+        width:100%;
+    }
+
+    .final-wave {
+        display: block;
+    }
+
+    .final-wave img {
+        width:100%;
+    }
+
+}

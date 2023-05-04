@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+.footer {
+    padding: 56px 257px 21px 100px;
+}
+
+.mob-border {
+    display: none;
+}
+
+.border {
+    border-bottom: 1px solid #E3E1DC;
+    margin-bottom:55px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.imgArea {
+    display: none;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.list a {
+    text-decoration: none;
+    font-size:18px;
+    line-height:24px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+    cursor: pointer;
+}
+
+.privacy-container {
+    margin-top:125px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paragraph {
+    font-size:12px;
+    line-height:16px;
+    color:#A8A8A8;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.terms-link {
+    font-size:18px;
+    line-height:24px;
+    color:#514C3B;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.terms-link:first-child {
+    margin-right:35px;
+}
+
+@media screen and (max-width:420px) {
+
+    .desk-logo {
+        display: none;
+    }
+
+    .footer {
+        margin-top:100px;
+        padding: 0 20px;
+    }
+    
+    .border {
+        display: none;
+    }
+    
+    .links-container {
+        display: grid;
+        grid-template-areas: 
+        'zon1 zon2'
+        'border border'
+        'zon3 zon4'
+        ;
+        row-gap: 44px;
+    }
+
+    .mob-border {
+        display: block;
+        grid-area: border;
+        border-bottom: 1px solid #E3E1DC;
+    }
+
+    .imgArea {
+        display: block;
+        grid-area: zon1;
+    }
+
+    .list1-area {
+        grid-area: zon3;
+    }
+    .list2-area {
+        grid-area: zon4;
+    }
+    .list3-area {
+        grid-area: zon2;
+    }
+    
+    .privacy-container {
+        margin-top:44px;
+        flex-direction: column-reverse;
+        gap:44px;
+    }
+    
+    .paragraph {
+        margin-bottom:16px;
+    }
+    
+    .terms-link:first-child {
+        margin-right:120px;
+    }
+}

@@ -1,0 +1,34 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+}
+
+.desk-wave {
+    position: absolute;
+    top:560px;
+    left:0;
+    z-index: -1;
+}
+
+.mob-wave {
+    display: none;
+}
+
+@media screen and (max-width:420px) {
+    .desk-wave {
+        display: none;
+    }
+
+    .mob-wave {
+        display: block;
+    }
+
+    .mob-wave img {
+        width:100%;
+    }
+}
