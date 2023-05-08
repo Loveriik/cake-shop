@@ -7,22 +7,40 @@ import { Fragment } from 'react'
 import Footer from './Footer'
 import Logo from '../images/Logo'
 import MobileLogo from '../images/MobileLogo'
+import Cart from '../Cart/Cart'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import CartContext from '../data/cart-context'
 
 const Navigation = () => {
 
-    const [mobMenuOpen, setMobMenuOpen] = useState(false)
+    const cartCtx = useContext(CartContext)
+
+    const numberOfItems = cartCtx.items.reduce((curNumber, item) => {
+        return curNumber + item.amount
+    }, 0)
+
+    const [ mobMenuOpen, setMobMenuOpen ] = useState(false)
+    const [ cartOpen, setCartOpen ] = useState(false)
 
     const menuToggle = () => {
         setMobMenuOpen(!mobMenuOpen)
+    }
+
+    const cartToggle = () => {
+        setCartOpen(!cartOpen)
     }
 
     let location = useLocation()
 
     return (
         <Fragment>
-            <nav className={classes.nav}>
+            <Cart 
+                onClick={cartToggle} 
+                toggle={cartOpen} 
+            />
+
+            <nav className={classes.nav}>               
                 <FontAwesomeIcon icon={faBars} size='lg' className={`${classes.burgerBtn} ${location.pathname === '/' ? undefined : classes.dark}`} onClick={menuToggle}/>
 
                 <NavLink to='/' className={classes.desktopLogo} >
@@ -39,7 +57,7 @@ const Navigation = () => {
                             </NavLink>
                             <div className={classes.mobIcons}>
                                 <FontAwesomeIcon icon={faUser} size='lg' className={classes.iconMobile} />
-                                <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.iconMobile} />
+                                <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.iconMobile}/>
                                 <FontAwesomeIcon icon={faXmark} size='lg' className={classes.iconMobile} onClick={menuToggle}/>
                             </div>
                         </div>
@@ -76,10 +94,15 @@ const Navigation = () => {
                 <div className={`${location.pathname === '/' ? undefined : classes.dark} ${classes.socials}`}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' className={`${classes.icon} ${classes.glass}`}/>
                     <FontAwesomeIcon icon={faUser} size='lg' className={classes.icon}/>
-                    <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.icon}/>
+                    <div className={classes['cart-container']}>
+                        <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.icon} onClick={cartToggle}/>
+                        <span className={classes.amount}>{numberOfItems}</span>
+                    </div>
                 </div>
             </nav>
+
             <Outlet />
+
             <Footer />
 
         </Fragment>

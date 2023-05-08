@@ -9,7 +9,9 @@ import wave2 from '../../images/wave9.png'
 const ContactUs = () => {
     return (
         <div className={classes.container}>
-            <RequestDemo src={pic3} />
+            <div className={classes['request-container']}>
+                <RequestDemo src={pic3} />
+            </div>
             <div className={classes['desk-wave']}>
                 <img src={wave2} alt='wave'/>
             </div>

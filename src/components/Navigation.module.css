@@ -69,6 +69,21 @@
     color:white;
 }
 
+.cart-container {
+    display: flex;
+}
+
+.amount {
+    color:#141515;
+    display:grid;
+    place-items: center;
+    transform: translateY(10px) translateX(4px);
+    background-color: #FCD30370;
+    height:20px;
+    width:20px;
+    border-radius: 50%;
+}
+
 .socials.dark {
     color:#141515;
 }

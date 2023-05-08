@@ -173,7 +173,9 @@ const ProductPage = ({src, title}) => {
                 <div className={classes['demo-wave']}>
                     <img src={wave2} alt='wave' />
                 </div>
-                <RequestDemo src={pic} />
+                <div className={classes['request-container']}>
+                    <RequestDemo src={pic} />
+                </div>
             </div>
 
             <section className={classes['training-section']}>

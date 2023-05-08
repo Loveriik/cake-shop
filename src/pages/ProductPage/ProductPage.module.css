@@ -338,6 +338,9 @@ th {
 }
 
 @media screen and (max-width:420px) {
+    .request-container {
+        margin: 60px 0;
+    }
 
     /* General classes */
 

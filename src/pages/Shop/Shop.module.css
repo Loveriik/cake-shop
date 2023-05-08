@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0
+}
+
+/* General classes */
+
+.title2 {
+    font-size: 84px;
+    line-height: 92px;
+    color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+/*! Section */
+
+.section {
+    margin-top:70px;
+    padding-inline:100px;
+}
+
+.flex-container {
+    margin-top: 64px;
+    display: flex;
+    gap:87px;
+}
+
+.menu-container {
+    width:280px;
+}
+
+.title3 {
+    width:100%;
+    font-size: 24px;
+    line-height: 32px;
+    color: #A8A8A8;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+.list {
+    margin-top:32px;
+    list-style: none;
+}
+
+.list li {
+    font-size: 24px;
+    line-height: 32px;
+    color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    padding: 9px 20px;
+    cursor: pointer;
+}
+
+.list li:not(:last-child) {
+    margin-bottom:22px;
+}
+
+.list li:hover {
+    background-color:#FFF5E5;
+    border-radius: 8px;
+}
+
+.grid-container {
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    column-gap: 20px;
+    row-gap: 50px;
+}
+
+
+@media screen and (max-width:420px) {
+    .title2 {
+        font-size: 40px;
+        line-height: 44px;
+    }
+    
+    /*! Section */
+    
+    .section {
+        margin-top:70px;
+        padding-inline:20px;
+    }
+    
+    .flex-container {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .menu-container {
+        width:100%;
+    }
+    
+    .title3 {
+        display: none;
+    }
+    
+    .list {
+        margin-top:10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .list li:not(:last-child) {
+        margin-bottom:0;
+    }
+    
+    
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+        column-gap: 20px;
+    }
+}

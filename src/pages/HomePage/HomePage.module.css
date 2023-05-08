@@ -231,6 +231,11 @@ body {
 
 @media screen and (max-width:420px) {
 
+    .demo-margin {
+        margin-top:100px;
+        margin-bottom:100px
+    }
+
     .about-margin {
         margin-top:224px;
     }

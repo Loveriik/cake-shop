@@ -85,9 +85,10 @@
 }
 
 @media screen and (max-width:420px) {
+
     .section {
-        margin-top:0;
-        padding: 115px 20px;
+        padding: 0 0;
+        padding-inline:20px;
     }
 
     .image {

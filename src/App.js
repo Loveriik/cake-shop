@@ -2,13 +2,14 @@ import Navigation from "./components/Navigation";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ProductPage from "./pages/ProductPage/ProductPage";
-import Shop from "./pages/Shop";
+import Shop, { loader as productLoader } from "./pages/Shop/Shop";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
+import CartProvider from "./data/CartProvider";
 
 function App() {
 
@@ -31,7 +32,8 @@ function App() {
           element: <ProductPage src={cakePic2} title='Cakewalk'/>
         },
         { path: 'shop',
-          element: <Shop />
+          element: <Shop />,
+          loader: productLoader
         },
         { path: 'contactus',
           element: <ContactUs />
@@ -41,7 +43,10 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+
   );
 }
 

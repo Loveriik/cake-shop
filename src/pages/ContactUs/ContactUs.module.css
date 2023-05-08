@@ -20,6 +20,10 @@
 }
 
 @media screen and (max-width:420px) {
+    .request-container {
+        margin: 40px 0;
+    }
+
     .desk-wave {
         display: none;
     }

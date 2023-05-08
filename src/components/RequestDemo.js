@@ -1,5 +1,6 @@
 import classes from './RequestDemo.module.css'
 
+import ThankyouPage from './ThankyouPage'
 import { useReducer, useState, useEffect } from 'react'
 
 const emailValidation = (item) => {
@@ -11,49 +12,6 @@ const emailValidation = (item) => {
 const inputTextValidation = (item) => {
     return item.trim().length > 0
 }
-
-// const formInitialState = { 
-//     nameValue:'', 
-//     nameIsValid: true, 
-//     nameIsTouched: false, 
-//     emailValue:'',
-//     emailIsValid:true,
-//     emailIsTouched:false
-// }
-
-// const formReducer = (state, action) => {
-//     if (action.type === 'NAME_INPUT') {
-//         return {
-//             nameValue: action.val,
-//             nameIsValid: action.val.trim().length > 0,
-//             nameIsTouched: state.nameIsTouched,
-//             emailValue: state.emailValue,
-//             emailIsValid: state.emailIsValid,
-//             emailIsTouched: state.emailIsTouched
-//         }
-//     }
-
-//     if (action.type === 'NAME_BLUR') {
-//         return {
-//             nameValue: state.value,
-//             nameIsValid: state.value.trim().length > 0,
-//             nameIsTouched: true,
-//             emailValue: state.emailValue,
-//             emailIsValid: state.emailIsValid,
-//             emailIsTouched: state.emailIsTouched
-//         }
-//     }
-
-
-//     return {
-//         nameValue: '',
-//         nameIsValid: true,
-//         nameIsTouched: false,
-//         emailValue: '',
-//         emailIsValid: true,
-//         emailIsTouched: false
-//     }
-// }
 
 const nameReducer = (state, action) => {
 
@@ -130,48 +88,39 @@ const areaReducer = (state, action) => {
     }
 }
 
+const formInitialState = { 
+    nameValue:'', 
+    nameIsValid: true, 
+    nameIsTouched: false, 
+    emailValue:'',
+    emailIsValid:true,
+    emailIsTouched:false
+}
 
 const RequestDemo = (props) => {
 
-    const [ nameState, dispatchName ] = useReducer(nameReducer, { value: '', isValid: true, isTouched: false })
-
-    const [ emailState, dispatchEmail ] = useReducer(emailReducer, { value: '', isValid: true, isTouched: false })
-
-    const [ areaState, dispatchArea ] = useReducer(areaReducer, { value: '', isValid: true, isTouched: false })
-
+    const [ nameState, dispatchName ] = useReducer(nameReducer, { value: '', isValid: undefined, isTouched: false })
+    const [ emailState, dispatchEmail ] = useReducer(emailReducer, { value: '', isValid: undefined, isTouched: false })
+    const [ areaState, dispatchArea ] = useReducer(areaReducer, { value: '', isValid: undefined, isTouched: false })
     const [ formIsValid, setFormIsValid ] = useState(false)
 
-    // const [ formState, dispatchForm ] = useReducer(formReducer, formInitialState)
-
-    // const textInputHandler = (type, e) => {
-
-    //     dispatchForm({
-    //         action:type,
-    //         val:e.target.value
-    //     })
-    // }
-
-    // const textInputBlur = (type) => {
-    //     dispatchForm({
-    //         action:type
-    //     })
-    // }
-
+    const [ showMessage, setShowMessage ] = useState(false)
 
     const { isValid: nameIsValid } = nameState
     const { isValid: emailIsValid } = emailState
+    const { isValid: areaIsValid } = areaState
 
     useEffect(() => {
         const identifier = setTimeout(() => {
             setFormIsValid(
-                nameIsValid && emailIsValid
+                nameIsValid && emailIsValid && areaIsValid
             )
         }, 500)
 
         return () => {
             clearTimeout(identifier)
         }
-    }, [nameIsValid, emailIsValid])
+    }, [nameIsValid, emailIsValid,areaIsValid])
 
     const nameChangeHandler = (e) => {
         dispatchName({
@@ -219,29 +168,27 @@ const RequestDemo = (props) => {
             return
         }
 
+        setShowMessage(true)
+
     }   
     
 
     return (
         <section className={classes.section}>
             <div className={classes.image}><img src={props.src} alt='pic2'/></div>
-            <form className={classes.form} onSubmit={verification}>
+            {!showMessage ? <form className={classes.form} onSubmit={verification}>
                 <h2 className={classes.title2}>Request a demo</h2>
                 <div className={`${classes['input-holder']} ${classes.input1}`}>
                     <label htmlFor='name' className={classes.label}>Name:</label>
                     <input 
                         value={nameState.value || ''} 
-                        // value={formState.nameValue || ''}
                         className={`${classes.input} ${!nameState.isValid && nameState.isTouched ? classes.error : ''}`} 
                         type='text' 
                         id='name' 
                         onChange={nameChangeHandler}
                         onBlur={nameValidity}
-                        // onChange={(e) => textInputHandler('NAME_INPUT', e)}
-                        // onBlur={() => textInputBlur('NAME_BLUR')}
                     />
                     {!nameState.isValid && nameState.isTouched ? <p className={classes['error-paragraph']}>Please, type your name</p> : <p></p>}
-                    {/* {!formState.nameIsValid && formState.nameIsTouched ? <p className={classes['error-paragraph']}>Please, type your name</p> : <p></p>} */}
                 </div>
                 <div className={`${classes['input-holder']} ${classes.input2}`}>
                     <label htmlFor='email' className={classes.label}>E-mail:</label>
@@ -269,7 +216,7 @@ const RequestDemo = (props) => {
                     {!areaState.isValid && areaState.isTouched ? <p className={classes['error-paragraph']}>Please, write a short message to us.</p> : <p></p>}
                 </div>
                 <input className={classes['submit-btn']} type='submit' value='Submit'/>
-            </form>
+            </form> : <ThankyouPage /> }
         </section>
     )
 }

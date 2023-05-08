@@ -86,7 +86,7 @@ const AboutUs = () => {
                 <img src={wave2} alt='wave' />
             </div>
 
-            <div>
+            <div className={classes['request-demo']}>
                 <RequestDemo src={cake}/>
             </div>
 
