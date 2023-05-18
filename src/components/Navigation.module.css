@@ -6,6 +6,11 @@
     padding:0;
 }
 
+.shell {
+    position: relative;
+    overflow: hidden;
+}
+
 .footer-margin {
     margin-top: 100px;
 }

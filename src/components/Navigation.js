@@ -34,7 +34,7 @@ const Navigation = () => {
     let location = useLocation()
 
     return (
-        <Fragment>
+        <div className={classes.shell}>
             <Cart 
                 onClick={cartToggle} 
                 toggle={cartOpen} 
@@ -79,7 +79,7 @@ const Navigation = () => {
                         <NavLink to='shop' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Shop</li>
                         </NavLink>
-                        <NavLink>
+                        <NavLink to='trainings' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Trainings</li>
                         </NavLink>
                         <NavLink>
@@ -105,7 +105,7 @@ const Navigation = () => {
 
             <Footer />
 
-        </Fragment>
+        </div>
     )
 }
 

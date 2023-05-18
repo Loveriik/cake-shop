@@ -97,6 +97,12 @@
     color:#514C3B;
 }
 
+@media screen and (max-width:1440px) {
+    .left-arrow {
+        right:100px;
+    }
+}
+
 @media screen and (max-width:420px) {
 
     .arrow {

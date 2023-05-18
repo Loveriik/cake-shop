@@ -8,9 +8,9 @@ const defaultCartState = {
 }
 
 const cartReducer = (state, action) => {
+    
     if (action.type === 'ADD') {
         const updatedTotalAmount = state.totalAmount + action.item.price
-
         const existingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id)
         const existingCartItem = state.items[existingCartItemIndex]
 

@@ -36,6 +36,7 @@ const Cart = (props) => {
                     </div>
 
                     <div className={classes['cart-items']}>
+                        {cartCtx.items.length === 0 && <p className={classes.paragraph}>Your cart is empty</p>}
                         {cartCtx.items.map((item, index) => {
                             return <CartItem 
                                         data={item} 
@@ -60,7 +61,7 @@ const Cart = (props) => {
                         </div>
                     </div>
 
-                    <button className={classes.button}>Checkout</button>
+                    <button className={classes.button} disabled={cartCtx.items.length === 0}>Checkout</button>
 
                 </div>
             </div>
