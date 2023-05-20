@@ -6,7 +6,7 @@ import Shop, { loader as productLoader } from "./pages/Shop/Shop";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
-import Trainings from "./pages/Trainings/Trainings";
+import Trainings, { loader as trainingsLoader } from "./pages/Trainings/Trainings";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
@@ -40,7 +40,8 @@ function App() {
           element: <ContactUs />
         },
         { path: 'trainings',
-          element: <Trainings />
+          element: <Trainings />,
+          loader: trainingsLoader
         }
       ]
     }

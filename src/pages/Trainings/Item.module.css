@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+.training-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.image {
+    object-fit: contain;
+}
+
+.title4 {
+    margin-top:12px;
+    font-size: 24px;
+    line-height: 32px;
+    color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;  
+}
+
+.price-block {
+    margin-top:10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 24px;
+    line-height: 32px;
+    color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;  
+}
+
+.tag {
+    font-size: 18px;
+    line-height: 24px;
+    color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    padding: 6px 16px;
+    border:1px solid #141515;
+    border-radius: 20px;
+}
+
+.description {
+    margin-top:20px;
+    max-width:295px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #514C3B;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;  
+}
+
+.training-btn {
+    margin-top:10px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    background-color: #141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400; 
+    padding:6px 16px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+@media screen and (max-width:420px) {
+    
+    .title4 {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    
+    .price {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    
+    .tag {
+        font-size: 18px;
+        line-height: 20px;
+        padding: 3px 12px;
+    }
+    
+    .description {
+        margin-top:20px;
+        max-width:100%;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    
+    .training-btn {
+        font-size: 16px;
+        line-height: 20px;
+        padding:3px 12px;
+    }
+    
+}

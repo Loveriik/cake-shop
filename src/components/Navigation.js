@@ -2,7 +2,6 @@ import classes from './Navigation.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faUser, faMagnifyingGlass, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Fragment } from 'react'
 
 import Footer from './Footer'
 import Logo from '../images/Logo'
