@@ -1,7 +1,7 @@
 import classes from './Navigation.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faUser, faMagnifyingGlass, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet, useLocation, useNavigation } from 'react-router-dom'
 
 import Footer from './Footer'
 import Logo from '../images/Logo'
@@ -31,6 +31,7 @@ const Navigation = () => {
     }
 
     let location = useLocation()
+    const navigation = useNavigation()
 
     return (
         <div className={classes.shell}>
@@ -55,8 +56,11 @@ const Navigation = () => {
                                 <MobileLogo fill={`${location.pathname === '/' ? '#FCD303' : 'black'}`}/>
                             </NavLink>
                             <div className={classes.mobIcons}>
-                                <FontAwesomeIcon icon={faUser} size='lg' className={classes.iconMobile} />
-                                <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.iconMobile}/>
+                                <FontAwesomeIcon icon={faUser} size='lg' className={`${classes.iconMobile} ${classes.disabled}`} />
+                                <div className={classes['cart-container']}>
+                                    <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.iconMobile} onClick={cartToggle} />
+                                    <span className={classes.amount}>{numberOfItems}</span>
+                                </div>
                                 <FontAwesomeIcon icon={faXmark} size='lg' className={classes.iconMobile} onClick={menuToggle}/>
                             </div>
                         </div>
@@ -81,7 +85,7 @@ const Navigation = () => {
                         <NavLink to='trainings' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Trainings</li>
                         </NavLink>
-                        <NavLink>
+                        <NavLink className={classes.disabled}>
                             <li>Blog</li>
                         </NavLink>
                         <NavLink to='contactus' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
@@ -91,8 +95,8 @@ const Navigation = () => {
                 </div>
                 
                 <div className={`${location.pathname === '/' ? undefined : classes.dark} ${classes.socials}`}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' className={`${classes.icon} ${classes.glass}`}/>
-                    <FontAwesomeIcon icon={faUser} size='lg' className={classes.icon}/>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' className={`${classes.icon} ${classes.glass} ${classes.disabled}`}/>
+                    <FontAwesomeIcon icon={faUser} size='lg' className={`${classes.icon} ${classes.disabled}`}/>
                     <div className={classes['cart-container']}>
                         <FontAwesomeIcon icon={faCartShopping} size='lg' className={classes.icon} onClick={cartToggle}/>
                         <span className={classes.amount}>{numberOfItems}</span>
@@ -100,7 +104,7 @@ const Navigation = () => {
                 </div>
             </nav>
 
-            <Outlet />
+            { navigation.state === 'loading' ? <p className={classes.status}>Loading page...</p> : <Outlet />}
 
             <Footer />
 

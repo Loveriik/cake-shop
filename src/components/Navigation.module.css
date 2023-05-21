@@ -11,6 +11,15 @@
     overflow: hidden;
 }
 
+.status {
+    margin-top:50px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 22px;
+    line-height:26px;
+    color:black;
+    text-align: center;
+}
+
 .footer-margin {
     margin-top: 100px;
 }
@@ -48,7 +57,7 @@
     position: relative;
 }
 
-.list a::after {
+.list a:not(.disabled)::after {
     content: '';
     position: absolute;
     width:100%;
@@ -66,6 +75,10 @@
 .list a.active::after {
     transform-origin: left;
     transform: scale(1);
+}
+
+.disabled {
+    opacity:0.5;
 }
 
 .socials {

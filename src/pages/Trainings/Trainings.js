@@ -18,6 +18,7 @@ const Trainings = () => {
     }
 
     return (
+        
         <Fragment>
             <header className={classes.header}>
                 <div className={classes['header-textContainer']}>
