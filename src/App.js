@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Trainings, { loader as trainingsLoader } from "./pages/Trainings/Trainings";
+import Checkout from "./pages/Checkout/Checkout";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
@@ -42,6 +43,10 @@ function App() {
         { path: 'trainings',
           element: <Trainings />,
           loader: trainingsLoader
+        },
+        {
+          path: 'blog',
+          element: <Checkout />,
         }
       ]
     }
