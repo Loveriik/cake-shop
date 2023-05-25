@@ -120,11 +120,11 @@
     border-collapse: collapse;
 }
 
-tr:not(:last-child) {
+.tr:not(:last-child) {
     border-bottom: 1px solid #E3E1DC;
 }
 
-th,td {
+.th, .td {
     text-align: left;
     padding: 16px 0;
     font-size: 18px;
@@ -132,11 +132,11 @@ th,td {
     color:#141515;
 }
 
-td {
+.td {
     width:40%;
 }
 
-th {
+.th {
     display: flex;
     align-items: flex-start;
     width:60%;
@@ -403,7 +403,8 @@ th {
         max-width:100%;
     }
     
-    th,td {
+    .th,
+    .td {
         font-size: 16px;
         line-height: 20px;
     }

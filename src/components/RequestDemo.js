@@ -88,14 +88,14 @@ const areaReducer = (state, action) => {
     }
 }
 
-const formInitialState = { 
-    nameValue:'', 
-    nameIsValid: true, 
-    nameIsTouched: false, 
-    emailValue:'',
-    emailIsValid:true,
-    emailIsTouched:false
-}
+// const formInitialState = { 
+//     nameValue:'', 
+//     nameIsValid: true, 
+//     nameIsTouched: false, 
+//     emailValue:'',
+//     emailIsValid:true,
+//     emailIsTouched:false
+// }
 
 const RequestDemo = (props) => {
 

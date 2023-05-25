@@ -1,6 +1,7 @@
 import classes from './Cart.module.css'
 
 import { Fragment } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import CartItem from './CartItem'
@@ -10,7 +11,7 @@ import { useContext } from 'react'
 
 
 const Cart = (props) => {
-
+    const navigate = useNavigate(0)
     const cartCtx = useContext(CartContext)
 
     const cartItemRemove = (id) => {
@@ -23,6 +24,13 @@ const Cart = (props) => {
 
     const cartItemDelete = (id) => {
         cartCtx.deleteItem(id)
+    }
+
+    const cartClose = props.onClick
+
+    const clickHandler = () => {
+        navigate('checkout')
+        cartClose()
     }
 
     return (
@@ -61,7 +69,7 @@ const Cart = (props) => {
                         </div>
                     </div>
 
-                    <button className={classes.button} disabled={cartCtx.items.length === 0}>Checkout</button>
+                    <button className={classes.button} disabled={cartCtx.items.length === 0} onClick={clickHandler}>Checkout</button>
 
                 </div>
             </div>

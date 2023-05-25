@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding-right:5px;
+    max-height:300px;
+    overflow-y: auto;
+}
+
+.cart {
+    width:520px;
+    background-color: #FFFFFF;
+    padding:48px 60px;
+    align-self: flex-start;
+}
+
+.border {
+    margin-top:40px;
+    border-bottom: 1px solid #E3E1DC;
+}
+
+.price-container {
+    margin-top:24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tag {
+    font-size:24px;
+    line-height:32px;
+    font-family: 'Work Sans', sans-serif;
+    color:#514C3B;
+    font-weight: 400;
+}
+
+.tag-price {
+    font-size:24px;
+    line-height:32px;
+    font-family: 'Work Sans', sans-serif;
+    color:#141515;
+    font-weight: 500;
+}
+
+.final-price-container {
+    margin-top:24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.final-tag {
+    font-size:24px;
+    line-height:32px;
+    font-family: 'Work Sans', sans-serif;
+    color:#141515;
+    font-weight: 500;
+}
+
+@media screen and (max-width:420px) {
+    .cart {
+        width:100%;
+        background-color: transparent;
+        padding:20px 0;
+        align-self: flex-start;
+    }
+    
+    .border {
+        margin-top:20px;
+    }
+    
+    .price-container {
+        margin-top:20px;
+    }
+    
+    .tag {
+        font-size:20px;
+        line-height:26px;
+    }
+    
+    .tag-price {
+        font-size:20px;
+        line-height:26px;
+    }
+    
+    .final-price-container {
+        margin-top:20px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .final-tag {
+        font-size:20px;
+        line-height:26px;
+    }
+}

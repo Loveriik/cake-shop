@@ -62,33 +62,33 @@ const ProductPage = ({src, title}) => {
                     <div>
                         <table className={classes['section2-table']}>
                             <tbody>
-                                <tr>
-                                    <th>Dimensions</th>
-                                    <td>400 x 600 x 150 mm (H x W x D)</td>
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>Dimensions</th>
+                                    <td className={classes.td}>400 x 600 x 150 mm (H x W x D)</td>
                                 </tr>
-                                <tr>
-                                    <th>Paste tank capacity</th>
-                                    <td>1.2 L</td>
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>Paste tank capacity</th>
+                                    <td className={classes.td}>1.2 L</td>
                                 </tr>
-                                <tr>
-                                    <th>New Powder tank capacity</th>
-                                    <td>8 L</td>
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>New Powder tank capacity</th>
+                                    <td className={classes.td}>8 L</td>
                                 </tr>
-                                <tr>
-                                    <th>Reused Powder tank capacity</th>
-                                    <td>8 L</td>
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>Reused Powder tank capacity</th>
+                                    <td className={classes.td}>8 L</td>
                                 </tr>
-                                <tr>
-                                    <th>Features</th>
-                                    <td>Automatic filling of the pastry tank
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>Features</th>
+                                    <td className={classes.td}>Automatic filling of the pastry tank
                                         Automatic powder refilling between layers
                                         Automatic head start
                                         Head extruder from 0.8 to 3mm
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>Printing setup</th>
-                                    <td>2 min.
+                                <tr className={classes.tr}>
+                                    <th className={classes.th}>Printing setup</th>
+                                    <td className={classes.td}>2 min.
                                         Just fill the paste tanke with your dough and connect it to the head with a clean pipe and fit the correct size head nozzle.
                                     </td>
                                 </tr>

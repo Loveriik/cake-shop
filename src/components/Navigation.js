@@ -85,7 +85,7 @@ const Navigation = () => {
                         <NavLink to='trainings' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Trainings</li>
                         </NavLink>
-                        <NavLink to='blog' className={classes.disabled}>
+                        <NavLink className={classes.disabled}>
                             <li>Blog</li>
                         </NavLink>
                         <NavLink to='contactus' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>

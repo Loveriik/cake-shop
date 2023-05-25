@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+/*? General classes */
+
+.title2 {
+    margin-top:62px;
+    font-size:84px;
+    line-height:92px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+/*! Section */
+
+.section {
+    margin-top:70px;
+    margin-bottom:120px;
+    padding-inline:100px;
+}
+
+.main-container {
+    margin-top:64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.personal-details {
+    min-width:510px;
+}
+
+.title3 {
+    font-size:24px;
+    line-height:32px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+}
+
+.table {
+    margin-top:32px;
+    width:100%;
+    border-collapse: collapse;
+}
+
+.tr {
+    border-bottom:1px solid #E3E1DC;
+}
+
+.tr:first-of-type {
+    border-top:1px solid #E3E1DC;
+}
+
+.th, .td {
+    padding:16px 0;
+    text-align: left;
+    font-size:18px;
+    line-height:24px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.th {
+    font-weight: 500;
+    width:60%;
+}
+
+.buttons {
+    margin-top:64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftbtn {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size:18px;
+    line-height:24px;
+    color:#141515;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+.rightBtn {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size:18px;
+    line-height:24px;
+    padding:12px 24px;
+    background-color:#141515;
+    color:#FFFFFF;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400; 
+    border-radius: 8px;
+}
+
+@media screen and (max-width:420px) {
+    /*? General classes */
+
+    .title2 {
+        font-size: 50px;
+        line-height: 44px;
+    }
+
+    /*! Section */
+
+    .section {
+        margin-bottom: 60px;
+        padding-inline: 20px;
+    }
+
+    .main-container {
+        margin-top: 64px;
+        flex-direction: column-reverse;
+        gap:64px;
+    }
+
+    .personal-details {
+        min-width: 100%;
+    }
+
+    .th,
+    .td {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}

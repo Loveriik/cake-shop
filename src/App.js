@@ -7,7 +7,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Trainings, { loader as trainingsLoader } from "./pages/Trainings/Trainings";
-import Checkout from "./pages/Checkout/Checkout";
+import Checkout, { action as infoAction } from "./pages/Checkout/Checkout";
+import Confirmation from "./pages/Checkout/Confirmation";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
@@ -45,9 +46,15 @@ function App() {
           loader: trainingsLoader
         },
         {
-          path: 'blog',
-          element: <Checkout />,
+          path:'checkout',
+          element:<Checkout />,
+          action:infoAction
+        },
+        {
+          path:'/checkout/confirmation',
+          element:<Confirmation />
         }
+        
       ]
     }
   ])
