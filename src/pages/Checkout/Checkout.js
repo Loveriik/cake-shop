@@ -27,6 +27,19 @@ const Checkout = () => {
         })
     }
 
+    // const digitHandler = (type, e) => {
+    //     dispatchDigitVal({
+    //         type:type,
+    //         val: e.target.value
+    //     })
+    // }
+
+    // const digitFocus = (type) => {
+    //     dispatchDigitVal({
+    //         type:type
+    //     })
+    // }
+
     const deliveryHandler = (e) => {
         setDelivery(e.target.value)
     }
@@ -56,8 +69,18 @@ const Checkout = () => {
                                     onBlur={textFocus.bind(null, 'NAME_BLUR')}
                                 />
                                 {!textValidation.isNameValid && textValidation.isNameTouched && <span className={classes.error}>Type your name please</span>}
-                                <input type='email' name='Email' className={classes.input} placeholder='Email'/>
-                                <input type='number' name='Phone' className={classes.input} placeholder='Phone'/>
+                                <input 
+                                    type='email' 
+                                    name='Email' 
+                                    className={classes.input} 
+                                    placeholder='Email'
+                                />
+                                <input 
+                                    type='number' 
+                                    name='Phone' 
+                                    className={classes.input} 
+                                    placeholder='Phone'
+                                />
                             </div>
 
                             <div className={classes['info-block']}>
