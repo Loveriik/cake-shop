@@ -88,15 +88,6 @@ const areaReducer = (state, action) => {
     }
 }
 
-// const formInitialState = { 
-//     nameValue:'', 
-//     nameIsValid: true, 
-//     nameIsTouched: false, 
-//     emailValue:'',
-//     emailIsValid:true,
-//     emailIsTouched:false
-// }
-
 const RequestDemo = (props) => {
 
     const [ nameState, dispatchName ] = useReducer(nameReducer, { value: '', isValid: undefined, isTouched: false })

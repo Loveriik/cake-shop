@@ -3,19 +3,19 @@
 
 export const textInitial = {
     nameValue: '',
-    isNameValid: true,
+    isNameValid: undefined,
     isNameTouched: false,
     addressValue: '',
-    isAddressValid: true,
+    isAddressValid: undefined,
     isAddressTouched: false,
     cityValue: '',
-    isCityValid: true,
+    isCityValid: undefined,
     isCityTouched: false,
     countryValue: '',
-    isCountryValid: true,
+    isCountryValid: undefined,
     isCountryTouched: false,
     cardNameValue: '',
-    isCardNameValid: true,
+    isCardNameValid: undefined,
     isCardNameTouched: false,
 
 }
@@ -30,7 +30,7 @@ export const textReducer = (state, action) => {
             ...state,
             nameValue:action.val,
             isNameValid:inputTextValidation(action.val),
-            isNameTouched:state.isTouched
+            isNameTouched:state.isNameTouched
         }
     }
 
@@ -48,7 +48,7 @@ export const textReducer = (state, action) => {
             ...state,
             addressValue:action.val,
             isAddressValid:inputTextValidation(action.val),
-            isAddressTouched:state.isTouched
+            isAddressTouched:state.isAddressTouched
         }
     }
 
@@ -66,7 +66,7 @@ export const textReducer = (state, action) => {
             ...state,
             cityValue:action.val,
             isCityValid:inputTextValidation(action.val),
-            isCityTouched:state.isTouched
+            isCityTouched:state.isCityTouched
         }
     }
 
@@ -84,7 +84,7 @@ export const textReducer = (state, action) => {
             ...state,
             countryValue:action.val,
             isCountryValid:inputTextValidation(action.val),
-            isCountryTouched:state.isTouched
+            isCountryTouched:state.isCountryTouched
         }
     }
     
@@ -102,7 +102,7 @@ export const textReducer = (state, action) => {
             ...state,
             cardNameValue:action.val,
             isCardNameValid:inputTextValidation(action.val),
-            isCardNameTouched:state.isTouched
+            isCardNameTouched:state.isCardNameTouched
         }
     }
 
@@ -118,27 +118,27 @@ export const textReducer = (state, action) => {
     return textInitial
 }
 
-/* Reducer for digit inputs */
+/* Digital reducer */
 
-export const digitInitial = {
+export const initial = {
     emailValue: '',
-    isEmailValid: true,
+    isEmailValid: undefined,
     isEmailTouched: false,
     phoneValue: '',
-    isPhoneValid: true,
+    isPhoneValid: undefined,
     isPhoneTouched: false,
-    codeValue: '',
-    isCodeValid: true,
-    isCodeTouched: false,
+    postalValue: '',
+    isPostalValid: undefined,
+    isPostalTouched: false,
     cardValue: '',
-    isCardValid: true,
+    isCardValid: undefined,
     isCardTouched: false,
-    expDateValue: '',
-    isExpDateValid: true,
-    isExpDateTouched: false,
+    dateValue: '',
+    isDateValid: undefined,
+    isDateTouched: false,
     cvvValue: '',
-    isCvvValid: true,
-    isCvvTouched: false,
+    isCvvValid: undefined,
+    isCvvTouched: false
 }
 
 const emailValidation = (item) => {
@@ -147,17 +147,17 @@ const emailValidation = (item) => {
     )
 }
 
-const digitInputValidation = (item) => {
-    return item.length > 0 && +item < 0
+const inputValidation = (item) => {
+    return item.trim().length > 0 
 }
 
-export const digitReducer = (state, action) => {
+export const reducer = (state, action) => {
     if (action.type === 'EMAIL') {
         return {
             ...state,
             emailValue:action.val,
             isEmailValid:emailValidation(action.val),
-            isEmailTouched:state.isTouched
+            isEmailTouched:state.isEmailTouched
         }
     }
 
@@ -165,8 +165,8 @@ export const digitReducer = (state, action) => {
         return {
             ...state,
             emailValue:state.emailValue,
-            isNameValid:emailValidation(state.emailValue),
-            isNameTouched:true
+            isEmailValid:emailValidation(state.emailValue),
+            isEmailTouched:true
         }
     }
 
@@ -174,73 +174,91 @@ export const digitReducer = (state, action) => {
         return {
             ...state,
             phoneValue:action.val,
-            isPhoneValid:digitInputValidation(action.val),
-            isPhoneTouched:state.isTouched
+            isPhoneValid:inputValidation(action.val),
+            isPhoneTouched:state.isPhoneTouched
         }
     }
 
-    if (action.type === 'ADDRESS_BLUR') {
+    if (action.type === 'PHONE_BLUR') {
         return {
             ...state,
-            addressValue:state.addressValue,
-            isAddressValid:inputTextValidation(state.addressValue),
-            isAddressTouched:true
+            phoneValue:state.phoneValue,
+            isPhoneValid:inputValidation(state.phoneValue),
+            isPhoneTouched:true
         }
     }
 
-    if (action.type === 'CITY') {
+    if (action.type === 'POSTAL') {
         return {
             ...state,
-            cityValue:action.val,
-            isCityValid:inputTextValidation(action.val),
-            isCityTouched:state.isTouched
+            postalValue:action.val,
+            isPostalValid:inputValidation(action.val),
+            isPostalTouched:state.isPostalTouched
         }
     }
 
-    if (action.type === 'CITY_BLUR') {
+    if (action.type === 'POSTAL_BLUR') {
         return {
             ...state,
-            cityValue:state.cityValue,
-            isCityValid:inputTextValidation(state.cityValue),
-            isCityTouched:true
+            postalValue:state.postalValue,
+            isPostalValid:inputValidation(state.postalValue),
+            isPostalTouched:true
         }
     }
 
-    if (action.type === 'COUNTRY') {
+    if (action.type === 'CARD') {
         return {
             ...state,
-            countryValue:action.val,
-            isCountryValid:inputTextValidation(action.val),
-            isCountryTouched:state.isTouched
-        }
-    }
-    
-    if (action.type === 'COUNTRY_BLUR') {
-        return {
-            ...state,
-            countryValue:state.countryValue,
-            isCountryValid:inputTextValidation(state.countryValue),
-            isCountryTouched:true
+            cardValue:action.val,
+            isCardValid:inputValidation(action.val),
+            isCardTouched:state.isCardTouched
         }
     }
 
-    if (action.type === 'CARDNAME') {
+    if (action.type === 'CARD_BLUR') {
         return {
             ...state,
-            cardNameValue:action.val,
-            isCardNameValid:inputTextValidation(action.val),
-            isCardNameTouched:state.isTouched
+            cardValue:state.cardValue,
+            isCardValid:inputValidation(state.cardValue),
+            isCardTouched:true
         }
     }
 
-    if (action.type === 'CARDNAME_BLUR') {
+    if (action.type === 'DATE') {
         return {
             ...state,
-            cardNameValue:state.cardNameValue,
-            isCardNameValid:inputTextValidation(state.cardNameValue),
-            isCardNameTouched:true
+            dateValue:action.val,
+            isDateValid:inputValidation(action.val),
+            isDateTouched:state.isDateTouched
         }
     }
 
-    return textInitial
+    if (action.type === 'DATE_BLUR') {
+        return {
+            ...state,
+            dateValue:state.dateValue,
+            isDateValid:inputValidation(state.dateValue),
+            isDateTouched:true
+        }
+    }
+
+    if (action.type === 'CVV') {
+        return {
+            ...state,
+            cvvValue:action.val,
+            isCvvValid:inputValidation(action.val),
+            isCvvTouched:state.isCvvTouched
+        }
+    }
+
+    if (action.type === 'CVV_BLUR') {
+        return {
+            ...state,
+            cvvValue:state.cvvValue,
+            isCvvValid:inputValidation(state.cvvValue),
+            isCvvTouched:true
+        }
+    }
+
+    return initial
 }

@@ -1,18 +1,46 @@
 import classes from './Checkout.module.css'
 
-import { Fragment, useContext, useState, useReducer } from 'react'
+import { Fragment, useContext, useState, useReducer, useEffect } from 'react'
 import { Form, Link } from 'react-router-dom'
 import CartContext from '../../data/cart-context'
-import { textInitial, textReducer } from './Reducers'
+import { textInitial, textReducer, initial, reducer } from './Reducers'
 
 import CheckoutCart from './CheckoutCart'
 
 const Checkout = () => {
 
     const [ textValidation, dispatchTextVal ] = useReducer(textReducer, textInitial)
+    const [ digitValidation, dispatchDigitVal ] = useReducer(reducer, initial)
 
     const cartCtx = useContext(CartContext)
+
     const [ deliveryPrice, setDelivery ] = useState(0)
+    const [ formIsValid, setFormIsValid ] = useState(false)
+
+    const { isNameValid: nameValid } = textValidation
+    const { isEmailValid: emailValid } = digitValidation
+    const { isPhoneValid: phoneValid } = digitValidation
+    const { isAddressValid: addressValid } = textValidation
+    const { isCityValid: cityValid } = textValidation
+    const { isPostalValid: postalValid } = digitValidation
+    const { isCountryValid: countryValid } = textValidation
+    const { isCardValid: cardValid } = digitValidation
+    const { isCardNameValid: cardNameValid } = textValidation
+    const { isDateValid: dateValid } = digitValidation
+    const { isCvvValid: cvvValid } = digitValidation
+    
+
+    useEffect(() => {
+        const identifier = setTimeout(() => {
+            setFormIsValid(
+                nameValid && emailValid && phoneValid && addressValid && cityValid && postalValid && countryValid && cardValid && cardNameValid && dateValid && cvvValid
+            )
+        }, 500)
+
+        return () => {
+            clearTimeout(identifier)
+        }
+    }, [nameValid, emailValid, phoneValid, addressValid, cityValid, postalValid, countryValid, cardValid, cardNameValid, dateValid, cvvValid])
 
     const textHandler = (type, e) => {
         dispatchTextVal({
@@ -27,18 +55,18 @@ const Checkout = () => {
         })
     }
 
-    // const digitHandler = (type, e) => {
-    //     dispatchDigitVal({
-    //         type:type,
-    //         val: e.target.value
-    //     })
-    // }
+    const digitHandler = (type, e) => {
+        dispatchDigitVal({
+            type:type,
+            val: e.target.value
+        })
+    }
 
-    // const digitFocus = (type) => {
-    //     dispatchDigitVal({
-    //         type:type
-    //     })
-    // }
+    const digitFocus = (type) => {
+        dispatchDigitVal({
+            type:type
+        })
+    }
 
     const deliveryHandler = (e) => {
         setDelivery(e.target.value)
@@ -47,7 +75,15 @@ const Checkout = () => {
     const finalPrice = +deliveryPrice + cartCtx.totalAmount
 
     const submitHandler = (e) => {
-        
+        e.preventDefault()
+
+        if (!formIsValid) {
+            return
+        }
+
+        if (formIsValid) {
+            console.log('success')
+        }
     }
 
     return (
@@ -71,16 +107,24 @@ const Checkout = () => {
                                 {!textValidation.isNameValid && textValidation.isNameTouched && <span className={classes.error}>Type your name please</span>}
                                 <input 
                                     type='email' 
+                                    value={digitValidation.emailValue || ''}
                                     name='Email' 
                                     className={classes.input} 
                                     placeholder='Email'
+                                    onChange={digitHandler.bind(null, 'EMAIL')}
+                                    onBlur={digitFocus.bind(null, 'EMAIL_BLUR')}
                                 />
+                                {!digitValidation.isEmailValid && digitValidation.isEmailTouched && <span className={classes.error}>Type a valid E-mail please</span>} 
                                 <input 
-                                    type='number' 
+                                    type='text' 
+                                    value={digitValidation.phoneValue || ''}
                                     name='Phone' 
                                     className={classes.input} 
                                     placeholder='Phone'
+                                    onChange={digitHandler.bind(null, 'PHONE')}
+                                    onBlur={digitFocus.bind(null, 'PHONE_BLUR')}
                                 />
+                                {!digitValidation.isPhoneValid && digitValidation.isPhoneTouched && <span className={classes.error}>Type your phone number please</span>} 
                             </div>
 
                             <div className={classes['info-block']}>
@@ -105,7 +149,16 @@ const Checkout = () => {
                                     onBlur={textFocus.bind(null, 'CITY_BLUR')}
                                 />
                                 {!textValidation.isCityValid && textValidation.isCityTouched && <span className={classes.error}>Type your city please</span>}
-                                <input type='number' name='Postal code' className={classes.input} placeholder='Postal code'/>
+                                <input 
+                                    type='text' 
+                                    value={digitValidation.postalValue || ''} 
+                                    name='Postal code' 
+                                    className={classes.input} 
+                                    placeholder='Postal code'
+                                    onChange={digitHandler.bind(null, 'POSTAL')}
+                                    onBlur={digitFocus.bind(null, 'POSTAL_BLUR')}
+                                />
+                                {!digitValidation.isPostalValid && digitValidation.isPostalTouched && <span className={classes.error}>Type your postal code please</span>} 
                                 <input 
                                     type='text' 
                                     value={textValidation.countryValue || ''} 
@@ -162,7 +215,16 @@ const Checkout = () => {
 
                             <div className={classes['info-block']}>
                                 <h3 className={classes.title3}>Payment method</h3>
-                                <input type='number' name='Card number' className={classes.input} placeholder='Card number'/>
+                                <input 
+                                    type='text' 
+                                    value={digitValidation.cardValue || ''}
+                                    name='Card number' 
+                                    className={classes.input} 
+                                    placeholder='Card number'
+                                    onChange={digitHandler.bind(null, 'CARD')}
+                                    onBlur={digitFocus.bind(null, 'CARD_BLUR')}
+                                />
+                                {!digitValidation.isCardValid && digitValidation.isCardTouched && <span className={classes.error}>Type your card number please</span>} 
                                 <input 
                                     type='text' 
                                     name='Cardholder' 
@@ -174,8 +236,32 @@ const Checkout = () => {
                                 />
                                 {!textValidation.isCardNameValid && textValidation.isCardNameTouched && <span className={classes.error}>Type the cardholder name please</span>}
                                 <div className={classes.validity}>
-                                    <input type='number' name='Expirationo date' className={classes.input} placeholder='Expiration date'/>
-                                    <input type='number' name='CVV' className={classes.input} placeholder='CVV'/>
+                                    <div>
+                                        <input
+                                            type='text'
+                                            value={digitValidation.dateValue || ''}
+                                            name='Expiration date'
+                                            className={classes.input}
+                                            placeholder='Expiration date'
+                                            onChange={digitHandler.bind(null, 'DATE')}
+                                            onBlur={digitFocus.bind(null, 'DATE_BLUR')}
+                                        />
+                                        {!digitValidation.isDateValid && digitValidation.isDateTouched && <span className={classes.error}>Type your expiration date please</span>}
+                                    </div>
+                                    
+                                    <div>
+                                        <input
+                                            type='text'
+                                            value={digitValidation.cvvValue || ''}
+                                            name='CVV'
+                                            className={classes.input}
+                                            placeholder='CVV'
+                                            onChange={digitHandler.bind(null, 'CVV')}
+                                            onBlur={digitFocus.bind(null, 'CVV_BLUR')}
+                                        />
+                                        {!digitValidation.isCvvValid && digitValidation.isCvvTouched && <span className={classes.error}>Type your cvv code please</span>}
+                                    </div>
+                                    
                                 </div>
                             </div>
 
