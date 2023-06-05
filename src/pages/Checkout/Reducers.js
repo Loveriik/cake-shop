@@ -14,6 +14,8 @@ export const textInitial = {
     countryValue: '',
     isCountryValid: undefined,
     isCountryTouched: false,
+    deliveryName: 'Free',
+    deliveryValue: 0,
     cardNameValue: '',
     isCardNameValid: undefined,
     isCardNameTouched: false,
@@ -94,6 +96,14 @@ export const textReducer = (state, action) => {
             countryValue:state.countryValue,
             isCountryValid:inputTextValidation(state.countryValue),
             isCountryTouched:true
+        }
+    }
+
+    if (action.type === 'DELIVERY') {
+        return {
+            ...state,
+            deliveryName: action.name,
+            deliveryValue: action.value,
         }
     }
 

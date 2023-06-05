@@ -1,8 +1,9 @@
 import classes from './Checkout.module.css'
 
 import { Fragment, useContext, useState, useReducer, useEffect } from 'react'
-import { Form, Link } from 'react-router-dom'
+import { Form, Link, useNavigate } from 'react-router-dom'
 import CartContext from '../../data/cart-context'
+import CheckoutContext from '../../data/checkout-context'
 import { textInitial, textReducer, initial, reducer } from './Reducers'
 
 import CheckoutCart from './CheckoutCart'
@@ -12,9 +13,11 @@ const Checkout = () => {
     const [ textValidation, dispatchTextVal ] = useReducer(textReducer, textInitial)
     const [ digitValidation, dispatchDigitVal ] = useReducer(reducer, initial)
 
-    const cartCtx = useContext(CartContext)
+    const navigate = useNavigate()
 
-    const [ deliveryPrice, setDelivery ] = useState(0)
+    const cartCtx = useContext(CartContext)
+    const checkoutCtx = useContext(CheckoutContext)
+
     const [ formIsValid, setFormIsValid ] = useState(false)
 
     const { isNameValid: nameValid } = textValidation
@@ -68,11 +71,15 @@ const Checkout = () => {
         })
     }
 
-    const deliveryHandler = (e) => {
-        setDelivery(e.target.value)
+    const deliveryHandler = (name, e) => {
+        dispatchTextVal({
+            type:'DELIVERY',
+            name:name,
+            value:e.target.value
+        })
     }
 
-    const finalPrice = +deliveryPrice + cartCtx.totalAmount
+    const finalPrice = +textValidation.deliveryValue + cartCtx.totalAmount
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -82,7 +89,18 @@ const Checkout = () => {
         }
 
         if (formIsValid) {
-            console.log('success')
+            const clientData = {
+                name: textValidation.nameValue,
+                email: digitValidation.emailValue,
+                phone: digitValidation.phoneValue,
+                address: textValidation.addressValue + ', ' + textValidation.cityValue + ', ' + digitValidation.postalValue + ', ' + textValidation.countryValue,
+                deliveryType:textValidation.deliveryName,
+                deliveryValue:textValidation.deliveryValue
+            }
+
+            checkoutCtx.client = clientData
+
+            navigate('/checkout/confirmation')
         }
     }
 
@@ -186,7 +204,7 @@ const Checkout = () => {
                                                 value='0' 
                                                 id='freeDelivery' 
                                                 className={classes.radio}
-                                                onChange={deliveryHandler}
+                                                onChange={deliveryHandler.bind(null, 'Colissimo')}
                                                 checked='checked'
                                             />
                                             <label className={classes.price} htmlFor='freeDelivery'>Free</label>     
@@ -205,7 +223,7 @@ const Checkout = () => {
                                                 value='8' 
                                                 id='costDelivery' 
                                                 className={classes.radio}
-                                                onChange={deliveryHandler}
+                                                onChange={deliveryHandler.bind(null, 'Mondial Relay')}
                                             />
                                             <label className={classes.price} htmlFor='costDelivery'>$8.00</label>
                                         </div>
@@ -272,7 +290,7 @@ const Checkout = () => {
                         </Form>
                     </div>
 
-                    <CheckoutCart finalPrice={finalPrice} deliveryPrice={deliveryPrice}/>
+                    <CheckoutCart finalPrice={finalPrice} deliveryPrice={textValidation.deliveryValue}/>
                 </div>
             </section>
         </Fragment>
@@ -280,19 +298,3 @@ const Checkout = () => {
 }
 
 export default Checkout
-
-export const action = async ({request}) => {
-    const data = await request.formData()
-
-    const address = data.get('Address') + ', ' + data.get('City') + ', ' + data.get('Postal code')+ ', ' + data.get('Country')
-
-    const paymentData = {
-        name:data.get('Name'),
-        email:data.get('Email'),
-        phone:data.get('Phone'),
-        address:address,
-        shipping: data.get('Delivery')
-    }
-
-    return paymentData
-}

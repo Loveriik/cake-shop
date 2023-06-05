@@ -1,10 +1,29 @@
 import classes from './Confirmation.module.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
 
 import CheckoutCart from './CheckoutCart' 
 
+import CartContext from '../../data/cart-context'
+import CheckoutContext from '../../data/checkout-context'
+
 const Confirmation = () => {
+
+    const cartCtx = useContext(CartContext)
+    const clientCtx = useContext(CheckoutContext)
+    const navigate = useNavigate()
+
+    const finalPrice = +clientCtx.client.deliveryValue + cartCtx.totalAmount
+
+    const confirmHandler = () => {
+        clientCtx.client = {}
+        cartCtx.items = []
+        cartCtx.totalAmount = 0
+
+        navigate('/')
+    }
+
     return (
         <section className={classes.section}>
             <h2 className={classes.title2}>Checkout</h2>
@@ -15,33 +34,33 @@ const Confirmation = () => {
                         <tbody>
                             <tr className={classes.tr}>
                                 <th className={classes.th}>Name</th>
-                                <td className={classes.td}>Mario Killi</td>
+                                <td className={classes.td}>{clientCtx.client.name}</td>
                             </tr>
                             <tr className={classes.tr}>
                                 <th className={classes.th}>Email</th>
-                                <td>s215@mnly@yandex.ru</td>
+                                <td>{clientCtx.client.email}</td>
                             </tr>
                             <tr className={classes.tr}>
                                 <th className={classes.th}>Phone</th>
-                                <td>+365497</td>
+                                <td>{clientCtx.client.phone}</td>
                             </tr>
                             <tr className={classes.tr}>
                                 <th className={classes.th}>Address</th>
-                                <td>Moscow</td>
+                                <td>{clientCtx.client.address}</td>
                             </tr>
                             <tr className={classes.tr}>
                                 <th className={classes.th}>Shipping method</th>
-                                <td>Callisimo</td>
+                                <td>{clientCtx.client.deliveryType}</td>
                             </tr>
                         </tbody>
                     </table>
                     <div className={classes.buttons}>
                         <Link to='..' relative='path' className={classes.leftbtn}>Go back</Link>
-                        <Link className={classes.rightBtn}>Confirm</Link>
+                        <button onClick={confirmHandler} className={classes.rightBtn}>Confirm</button>
                     </div>
                 </div>
                 
-                <CheckoutCart />
+                <CheckoutCart finalPrice={finalPrice} deliveryPrice={clientCtx.client.deliveryValue}/>
             </div>
         </section>
     )

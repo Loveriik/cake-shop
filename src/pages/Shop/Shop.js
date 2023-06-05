@@ -46,7 +46,7 @@ export default Shop
 
 
 export const loader = async () => {
-    const response = await fetch('https://cake-shop-39b0c-default-rtdb.firebaseio.com/shop.json')
+    const response = await fetch('https://cake-shop2-default-rtdb.firebaseio.com/shop.json')
     const data = await response.json()
 
     return data.items

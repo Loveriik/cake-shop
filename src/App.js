@@ -7,12 +7,14 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Trainings, { loader as trainingsLoader } from "./pages/Trainings/Trainings";
-import Checkout, { action as infoAction } from "./pages/Checkout/Checkout";
+import Checkout from "./pages/Checkout/Checkout";
 import Confirmation from "./pages/Checkout/Confirmation";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
 import CartProvider from "./data/CartProvider";
+
+import CheckoutProvider from "./data/CheckoutProvider";
 
 function App() {
 
@@ -47,8 +49,7 @@ function App() {
         },
         {
           path:'checkout',
-          element:<Checkout />,
-          action:infoAction
+          element:<Checkout />
         },
         {
           path:'/checkout/confirmation',
@@ -60,10 +61,11 @@ function App() {
   ])
 
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
-
+    <CheckoutProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </CheckoutProvider>
   );
 }
 

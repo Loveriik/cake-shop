@@ -211,6 +211,15 @@
     cursor:pointer;
 }
 
+.rightBtn:hover {
+    transition: transform 200ms ease-in-out;
+    transform: scale(1.05);
+}
+
+.rightBtn:active {
+    transform: scale(0.9);
+}
+
 
 @media screen and (max-width:420px) {
     .title2 {
