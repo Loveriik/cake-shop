@@ -285,7 +285,7 @@ const Checkout = () => {
 
                             <div className={classes.buttons}>
                                 <Link to='..' relative='path' className={classes.leftBtn}>Go back</Link>
-                                <input type='submit' value='Save and continue' className={classes.rightBtn}/>
+                                <button disabled={!formIsValid} type='submit' className={classes.rightBtn}>Save and continue</button>
                             </div>
                         </Form>
                     </div>

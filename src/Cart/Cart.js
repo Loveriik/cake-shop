@@ -11,7 +11,7 @@ import { useContext } from 'react'
 
 
 const Cart = (props) => {
-    const navigate = useNavigate(0)
+    const navigate = useNavigate()
     const cartCtx = useContext(CartContext)
 
     const cartItemRemove = (id) => {
