@@ -9,30 +9,36 @@ const cartSlice = createSlice({
     name:'cart',
     initialState: defaultCartState,
     reducers: {
-        add(state, action) {
+        addToCart(state, action) {
             state.totalAmount = state.totalAmount + action.payload.price
 
             const existingCartItemIndex = state.items.findIndex((item) => item.id === action.payload.id)
             const existingCartItem = state.items[existingCartItemIndex]
+
+            let updatedItems
 
             if (existingCartItem) {
                 const updatedItem = {
                     ...existingCartItem,
                     amount: existingCartItem.amount + action.payload.amount
                 }
-                state.items[existingCartItem] = updatedItem
+                
+                updatedItems = [...state.items]
+                updatedItems[existingCartItemIndex] = updatedItem
+
+                state.items = updatedItems
             } else {
-                state.items = state.items.concat(action.item)
+                state.items = state.items.concat(action.payload)
             }
 
         },
-        remove(state, action) {
+        removeFromCart(state, action) {
             const existingCartItemIndex = state.items.findIndex((item) => item.id === action.payload)
             const existingCartItem = state.items[existingCartItemIndex]
             state.totalAmount = state.totalAmount - existingCartItem.price
 
             if (existingCartItem.amount === 1) {
-                state.items.filter((item) => item.id !== action.payload)
+                state.items = state.items.filter((item) => item.id !== action.payload)
             } else {
                 const updatedItem = {
                     ...existingCartItem,
@@ -42,12 +48,12 @@ const cartSlice = createSlice({
             }
 
         },
-        delete(state, action) {
+        deleteFromCart(state, action) {
             const existingCartItemIndex = state.items.findIndex((item) => item.id === action.payload)
             const existingCartItem = state.items[existingCartItemIndex]
             state.totalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount
 
-            state.items.filter((item) => item.id !== action.payload)
+            state.items = state.items.filter((item) => item.id !== action.payload)
         }
     }
 })
