@@ -15,18 +15,13 @@ const cartSlice = createSlice({
             const existingCartItemIndex = state.items.findIndex((item) => item.id === action.payload.id)
             const existingCartItem = state.items[existingCartItemIndex]
 
-            let updatedItems
-
             if (existingCartItem) {
                 const updatedItem = {
                     ...existingCartItem,
                     amount: existingCartItem.amount + action.payload.amount
                 }
-                
-                updatedItems = [...state.items]
-                updatedItems[existingCartItemIndex] = updatedItem
 
-                state.items = updatedItems
+                state.items[existingCartItemIndex] = updatedItem
             } else {
                 state.items = state.items.concat(action.payload)
             }
@@ -54,16 +49,36 @@ const cartSlice = createSlice({
             state.totalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount
 
             state.items = state.items.filter((item) => item.id !== action.payload)
+        },
+        reset(state) {
+            state.items = []
+            state.totalAmount = 0
+        }
+    }
+})
+
+
+const clientSlice = createSlice({
+    name:'clientInfo',
+    initialState: { info: {} },
+    reducers: {
+        addInfo(state, action) {
+            state.info = action.payload
+        },
+        reset(state) {
+            state.info = {}
         }
     }
 })
 
 const store = configureStore({
     reducer: {
-        cart: cartSlice.reducer
+        cart: cartSlice.reducer,
+        client:clientSlice.reducer
     }
 })
 
 export const cartActions = cartSlice.actions
+export const clientActions = clientSlice.actions
 
 export default store

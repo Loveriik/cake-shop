@@ -1,14 +1,13 @@
 import classes from './Item.module.css'
 
-import CartContext from '../../data/cart-context'
-import { useContext } from 'react'
-
+import { cartActions } from '../../data/ReduxContext'
+import { useDispatch } from 'react-redux'
 
 const Item = ({item}) => {
-    const cartCtx = useContext(CartContext)
+    const dispatch = useDispatch()
 
     const cartItemAdd = (item) => {
-        cartCtx.addItem({...item, amount:1})
+        dispatch(cartActions.addToCart({...item, amount:1}))
     }
 
     return (

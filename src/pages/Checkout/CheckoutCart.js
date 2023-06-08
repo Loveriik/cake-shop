@@ -1,28 +1,32 @@
 import classes from './CheckoutCart.module.css'
 
-import { useContext } from 'react'
-import CartContext from '../../data/cart-context'
 import CartItem from '../../Cart/CartItem'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { cartActions } from '../../data/ReduxContext'
+
 const CheckoutCart = ({finalPrice, deliveryPrice}) => {
-    const cartCtx = useContext(CartContext)
+
+    const cartItems = useSelector( state => state.cart.items)
+    const totalAmount = useSelector( state => state.cart.totalAmount)
+    const dispatch = useDispatch()
 
     const cartItemRemove = (id) => {
-        cartCtx.removeItem(id)
+        dispatch(cartActions.removeFromCart(id))
     }
 
     const cartItemAdd = (item) => {
-        cartCtx.addItem({...item, amount:1})
+        dispatch(cartActions.addToCart({...item, amount:1}))
     }
 
     const cartItemDelete = (id) => {
-        cartCtx.deleteItem(id)
+        dispatch(cartActions.deleteFromCart(id))
     }
 
     return (
         <div className={classes.cart}>
             <div className={classes['products-container']}>
-                {cartCtx.items.map((item, index) => {
+                {cartItems.map((item, index) => {
                     return <CartItem
                         data={item}
                         key={index}
@@ -38,7 +42,7 @@ const CheckoutCart = ({finalPrice, deliveryPrice}) => {
             <div>
                 <div className={classes['price-container']}>
                     <span className={classes.tag}>Subtotal</span>
-                    <span className={classes['tag-price']}>${cartCtx.totalAmount}</span>
+                    <span className={classes['tag-price']}>${totalAmount}</span>
                 </div>
                 <div className={classes['price-container']}>
                     <span className={classes.tag}>Shipping</span>

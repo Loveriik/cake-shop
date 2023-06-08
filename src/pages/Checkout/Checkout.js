@@ -1,10 +1,12 @@
 import classes from './Checkout.module.css'
 
-import { Fragment, useContext, useState, useReducer, useEffect } from 'react'
+import { Fragment, useState, useReducer, useEffect } from 'react'
 import { Form, Link, useNavigate } from 'react-router-dom'
-import CartContext from '../../data/cart-context'
-import CheckoutContext from '../../data/checkout-context'
+
 import { textInitial, textReducer, initial, reducer } from './Reducers'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { clientActions } from '../../data/ReduxContext'
 
 import CheckoutCart from './CheckoutCart'
 
@@ -15,8 +17,8 @@ const Checkout = () => {
 
     const navigate = useNavigate()
 
-    const cartCtx = useContext(CartContext)
-    const checkoutCtx = useContext(CheckoutContext)
+    const dispatch = useDispatch()
+    const totalAmount = useSelector( state => state.cart.totalAmount )
 
     const [ formIsValid, setFormIsValid ] = useState(false)
 
@@ -79,7 +81,7 @@ const Checkout = () => {
         })
     }
 
-    const finalPrice = +textValidation.deliveryValue + cartCtx.totalAmount
+    const finalPrice = +textValidation.deliveryValue + totalAmount
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -98,7 +100,7 @@ const Checkout = () => {
                 deliveryValue:textValidation.deliveryValue
             }
 
-            checkoutCtx.client = clientData
+            dispatch(clientActions.addInfo(clientData))
 
             navigate('/checkout/confirmation')
         }

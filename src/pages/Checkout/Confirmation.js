@@ -1,26 +1,27 @@
 import classes from './Confirmation.module.css'
 
 import { Link } from 'react-router-dom'
-import { Fragment, useContext, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import CheckoutCart from './CheckoutCart' 
 
-import CartContext from '../../data/cart-context'
-import CheckoutContext from '../../data/checkout-context'
+import { useSelector } from 'react-redux'
+import { cartActions, clientActions } from '../../data/ReduxContext'
+import { useDispatch } from 'react-redux'
 
 const Confirmation = () => {
 
     const [ messageVisible, setMessageVisible ] = useState(false)
 
-    const cartCtx = useContext(CartContext)
-    const clientCtx = useContext(CheckoutContext)
+    const totalAmount = useSelector( state => state.cart.totalAmount)
+    const clientInfo = useSelector( state => state.client.info)
+    const dispatch = useDispatch()
 
-    const finalPrice = +clientCtx.client.deliveryValue + cartCtx.totalAmount
+    const finalPrice = +clientInfo.deliveryValue + totalAmount
 
     const confirmHandler = () => {
-        clientCtx.client = {}
-        cartCtx.items = []
-        cartCtx.totalAmount = 0
+        dispatch(clientActions.reset())
+        dispatch(cartActions.reset())
 
         setMessageVisible(!messageVisible)
     }
@@ -48,23 +49,23 @@ const Confirmation = () => {
                             <tbody>
                                 <tr className={classes.tr}>
                                     <th className={classes.th}>Name</th>
-                                    <td className={classes.td}>{clientCtx.client.name}</td>
+                                    <td className={classes.td}>{clientInfo.name}</td>
                                 </tr>
                                 <tr className={classes.tr}>
                                     <th className={classes.th}>Email</th>
-                                    <td>{clientCtx.client.email}</td>
+                                    <td>{clientInfo.email}</td>
                                 </tr>
                                 <tr className={classes.tr}>
                                     <th className={classes.th}>Phone</th>
-                                    <td>{clientCtx.client.phone}</td>
+                                    <td>{clientInfo.phone}</td>
                                 </tr>
                                 <tr className={classes.tr}>
                                     <th className={classes.th}>Address</th>
-                                    <td>{clientCtx.client.address}</td>
+                                    <td>{clientInfo.address}</td>
                                 </tr>
                                 <tr className={classes.tr}>
                                     <th className={classes.th}>Shipping method</th>
-                                    <td>{clientCtx.client.deliveryType}</td>
+                                    <td>{clientInfo.deliveryType}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,7 +75,7 @@ const Confirmation = () => {
                         </div>
                     </div>
 
-                    <CheckoutCart finalPrice={finalPrice} deliveryPrice={clientCtx.client.deliveryValue} />
+                    <CheckoutCart finalPrice={finalPrice} deliveryPrice={clientInfo.deliveryValue} />
                 </div>
             </section>
         </Fragment>

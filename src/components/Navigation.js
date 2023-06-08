@@ -8,20 +8,12 @@ import Logo from '../images/Logo'
 import MobileLogo from '../images/MobileLogo'
 import Cart from '../Cart/Cart'
 
-import { useState, useContext } from 'react'
-import CartContext from '../data/cart-context'
-
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const Navigation = () => {
 
     const cartItems = useSelector((state) => state.cart.items)
-
-    const cartCtx = useContext(CartContext)
-
-    // const numberOfItems = cartCtx.items.reduce((curNumber, item) => {
-    //     return curNumber + item.amount
-    // }, 0)
 
     const numberOfItems = cartItems.reduce((curNumber, item) => {
         return curNumber + item.amount

@@ -12,9 +12,6 @@ import Confirmation from "./pages/Checkout/Confirmation";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
-import CartProvider from "./data/CartProvider";
-
-import CheckoutProvider from "./data/CheckoutProvider";
 
 function App() {
 
@@ -61,11 +58,7 @@ function App() {
   ])
 
   return (
-    <CheckoutProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </CheckoutProvider>
+    <RouterProvider router={router} />
   );
 }
 
