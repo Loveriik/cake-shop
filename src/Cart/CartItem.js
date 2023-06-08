@@ -21,7 +21,7 @@ const CartItem = ({data, onRemove, onAdd, onDelete}) => {
             </div>
 
             <div className={classes['right-container']}>
-                <span className={classes.price}>{data.price}</span>
+                <span className={classes.price}>${data.price}</span>
                 <FontAwesomeIcon className={classes.logo} icon={faTrash} size='lg' onClick={onDelete}/>
             </div>
         </div>

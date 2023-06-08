@@ -8,7 +8,7 @@ import AboutUs from './pages/AboutUs/AboutUs'
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Trainings, { loader as trainingsLoader } from "./pages/Trainings/Trainings";
 import Checkout from "./pages/Checkout/Checkout";
-import Confirmation from "./pages/Checkout/Confirmation";
+import Confirmation, { action as clientOrder } from "./pages/Checkout/Confirmation";
 
 import cakePic from './images/cakePrinter.png'
 import cakePic2 from './images/cakePrinter2.png'
@@ -50,7 +50,8 @@ function App() {
         },
         {
           path:'/checkout/confirmation',
-          element:<Confirmation />
+          element:<Confirmation />,
+          action: clientOrder
         }
         
       ]

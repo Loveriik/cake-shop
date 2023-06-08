@@ -62,7 +62,7 @@ const Cart = (props) => {
                     <div>
                         <div className={classes['total-container']}>
                             <span className={classes.subTotal}>Subtotal</span>
-                            <span className={classes['total-price']}>{totalAmount}</span>
+                            <span className={classes['total-price']}>${totalAmount}</span>
                         </div>
 
                         <div className={classes.line}></div>

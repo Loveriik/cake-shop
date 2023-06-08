@@ -282,7 +282,7 @@
     }
     
     .price::before {
-        top:5px;
+        top:8px;
     }
     
     .validity {

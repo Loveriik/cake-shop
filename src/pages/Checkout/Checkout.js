@@ -207,7 +207,6 @@ const Checkout = () => {
                                                 id='freeDelivery' 
                                                 className={classes.radio}
                                                 onChange={deliveryHandler.bind(null, 'Colissimo')}
-                                                checked='checked'
                                             />
                                             <label className={classes.price} htmlFor='freeDelivery'>Free</label>     
                                         </div>
