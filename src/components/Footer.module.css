@@ -46,6 +46,15 @@
     cursor: pointer;
 }
 
+.list a.disabled {
+    opacity:0.5;
+    cursor:default;
+}
+
+.list a.info {
+    cursor:default;
+}
+
 .privacy-container {
     margin-top:125px;
     display: flex;

@@ -11,6 +11,8 @@ import Cart from '../Cart/Cart'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
+import ScrollToTop from './ScrollToTop'
+
 const Navigation = () => {
 
     const cartItems = useSelector((state) => state.cart.items)
@@ -30,7 +32,7 @@ const Navigation = () => {
         setCartOpen(!cartOpen)
     }
 
-    let location = useLocation()
+    const location = useLocation()
     const navigation = useNavigation()
 
     return (
@@ -85,9 +87,9 @@ const Navigation = () => {
                         <NavLink to='trainings' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Trainings</li>
                         </NavLink>
-                        <NavLink className={classes.disabled}>
+                        <a className={classes.disabled}>
                             <li>Blog</li>
-                        </NavLink>
+                        </a>
                         <NavLink to='contactus' className={({ isActive }) => isActive ? classes.active : undefined} onClick={menuToggle}>
                             <li>Contact us</li>
                         </NavLink>
@@ -106,6 +108,7 @@ const Navigation = () => {
 
             { navigation.state === 'loading' ? <p className={classes.status}>Loading page...</p> : <Outlet />}
 
+            <ScrollToTop />
             <Footer />
 
         </div>

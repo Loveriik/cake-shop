@@ -6,6 +6,10 @@
     padding:0;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 /*? General classes */
 
 .title2 {

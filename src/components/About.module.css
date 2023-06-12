@@ -8,10 +8,12 @@
 }
 
 .container {
-    padding: 115px 100px;
+    max-width:1440px;
+    padding: 115px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-inline:auto;
 }
 
 .reverse {
@@ -52,6 +54,7 @@
 @media screen and (max-width:420px) {
 
     .container {
+        max-width:100%;
         padding: 0 20px;
         display: flex;
         flex-direction: column;

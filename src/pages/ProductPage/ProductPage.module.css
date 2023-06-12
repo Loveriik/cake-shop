@@ -32,7 +32,7 @@
     border-radius: 8px;
     font-family: 'Work Sans', sans-serif;
     text-transform: uppercase;
-    cursor: pointer;
+    cursor: default;
     outline: none;
     background-color: #141515;
     color: #FFFFFF;
@@ -81,7 +81,7 @@
     border-radius: 8px;
     font-family: 'Work Sans', sans-serif;
     text-transform: uppercase;
-    cursor: pointer;
+    cursor: default;
     outline: none;
     background-color: transparent;
     color: #141515;
