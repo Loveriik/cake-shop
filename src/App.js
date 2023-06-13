@@ -16,7 +16,7 @@ import cakePic2 from './images/cakePrinter2.png'
 function App() {
 
   const router = createBrowserRouter([
-    { path: '/', 
+    { path: '/cake-shop', 
       element: <Navigation />,
       children: [
         {
@@ -49,7 +49,7 @@ function App() {
           element:<Checkout />
         },
         {
-          path:'/checkout/confirmation',
+          path:'checkout/confirmation',
           element:<Confirmation />,
           action: clientOrder
         }

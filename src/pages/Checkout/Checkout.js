@@ -102,7 +102,7 @@ const Checkout = () => {
 
             dispatch(clientActions.addInfo(clientData))
 
-            navigate('/checkout/confirmation')
+            navigate('confirmation')
         }
     }
 

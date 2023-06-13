@@ -46,7 +46,7 @@ const Confirmation = () => {
                 <p className={classes['message-p']}>
                     Thank you for your time. Your order has been placed. Soon you will receive an e-mail with your order details and tracking number.
                 </p>
-                <Link to='/' onClick={messageToggle}>To homepage</Link>
+                <Link to='/cake-shop' onClick={messageToggle}>To homepage</Link>
             </div>}
             <section className={classes.section}>
                 <h2 className={classes.title2}>Checkout</h2>

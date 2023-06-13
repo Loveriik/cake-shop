@@ -12,12 +12,12 @@ const Footer = () => {
         <footer className={classes.footer}>
             <div className={classes.border}/>
             <div className={classes['links-container']}>
-                <Link to='/' className={classes['desk-logo']}>
-                    <FooterLogoDesktop fill={`${location.pathname === '/' ? '#FCD303' : 'black'}`} />
+                <Link to='/cake-shop' className={classes['desk-logo']}>
+                    <FooterLogoDesktop fill={`${location.pathname === '/cake-shop' ? '#FCD303' : 'black'}`} />
                 </Link>
 
-                <Link to='/' className={classes.imgArea}>
-                    <FooterLogoMob fill={`${location.pathname === '/' ? '#FCD303' : 'black'}`} />
+                <Link to='/cake-shop' className={classes.imgArea}>
+                    <FooterLogoMob fill={`${location.pathname === '/cake-shop' ? '#FCD303' : 'black'}`} />
                 </Link>
 
                 <ul className={`${classes.list} ${classes['list1-area']}`}>
