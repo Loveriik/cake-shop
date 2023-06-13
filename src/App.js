@@ -16,7 +16,7 @@ import cakePic2 from './images/cakePrinter2.png'
 function App() {
 
   const router = createBrowserRouter([
-    { path: '/cake-shop', 
+    { path: '/', 
       element: <Navigation />,
       children: [
         {
