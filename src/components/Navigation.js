@@ -45,8 +45,8 @@ const Navigation = () => {
             <nav className={classes.nav}>               
                 <FontAwesomeIcon icon={faBars} size='lg' className={`${classes.burgerBtn} ${location.pathname === '/cake-shop' ? undefined : classes.dark}`} onClick={menuToggle}/>
 
-                <NavLink to='/cake-shop' className={classes.desktopLogo} >
-                    <Logo fill={`${location.pathname === '/cake-shop' ? '#FCD303' : 'black'}`}/>
+                <NavLink to='/' className={classes.desktopLogo} >
+                    <Logo fill={`${location.pathname === '/' ? '#FCD303' : 'black'}`}/>
                 </NavLink>
                 <NavLink to='/cake-shop' className={classes.mobHeaderLogo}>
                     <MobileLogo fill={`${location.pathname === '/cake-shop' ? '#FCD303' : 'black'}`}/>
