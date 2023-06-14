@@ -43,7 +43,7 @@ const Navigation = () => {
             />
 
             <nav className={classes.nav}>               
-                <FontAwesomeIcon icon={faBars} size='lg' className={`${classes.burgerBtn} ${location.pathname === '/cake-shop' ? undefined : classes.dark}`} onClick={menuToggle}/>
+                <FontAwesomeIcon icon={faBars} size='lg' className={`${classes.burgerBtn} ${location.pathname === '/' ? undefined : classes.dark}`} onClick={menuToggle}/>
 
                 <NavLink to='/' className={classes.desktopLogo} >
                     <Logo fill={`${location.pathname === '/' ? '#FCD303' : 'black'}`}/>
