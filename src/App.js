@@ -1,5 +1,5 @@
 import Navigation from "./components/Navigation";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Shop, { loader as productLoader } from "./pages/Shop/Shop";
@@ -15,7 +15,7 @@ import cakePic2 from './images/cakePrinter2.png'
 
 function App() {
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     { path: '/', 
       element: <Navigation />,
       children: [
