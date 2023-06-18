@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cake-shop/static/css/main.88409f1d.css",
-    "main.js": "/cake-shop/static/js/main.8d6ccc3f.js",
+    "main.css": "/cake-shop/static/css/main.84a9663a.css",
+    "main.js": "/cake-shop/static/js/main.ab477e7d.js",
     "static/media/cake.png": "/cake-shop/static/media/cake.6212239b699a0b21b91a.png",
     "static/media/news2.png": "/cake-shop/static/media/news2.38ee27a70ca85ad53018.png",
     "static/media/news1.png": "/cake-shop/static/media/news1.ed50ae7823ffc42cdc59.png",
@@ -40,11 +40,11 @@
     "static/media/wave8.png": "/cake-shop/static/media/wave8.4dd33c610e3e1e5ef98c.png",
     "static/media/wave6.png": "/cake-shop/static/media/wave6.59891d5567d8b69804f0.png",
     "index.html": "/cake-shop/index.html",
-    "main.88409f1d.css.map": "/cake-shop/static/css/main.88409f1d.css.map",
-    "main.8d6ccc3f.js.map": "/cake-shop/static/js/main.8d6ccc3f.js.map"
+    "main.84a9663a.css.map": "/cake-shop/static/css/main.84a9663a.css.map",
+    "main.ab477e7d.js.map": "/cake-shop/static/js/main.ab477e7d.js.map"
   },
   "entrypoints": [
-    "static/css/main.88409f1d.css",
-    "static/js/main.8d6ccc3f.js"
+    "static/css/main.84a9663a.css",
+    "static/js/main.ab477e7d.js"
   ]
 }
