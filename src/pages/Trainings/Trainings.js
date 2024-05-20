@@ -11,14 +11,14 @@ import Item from './Item'
 const Trainings = () => {
     const data = useLoaderData()
 
-    const [ state, setState ] = useState('all')
+    const [state, setState] = useState('all')
 
     const changeTrainings = (tag) => {
         setState(tag)
     }
 
     return (
-        
+
         <Fragment>
             <header className={classes.header}>
                 <div className={classes['header-textContainer']}>
@@ -26,7 +26,7 @@ const Trainings = () => {
                         <br />Trainings
                     </h2>
                     <p className={classes.paragraph}>
-                        La Pâtisserie Numérique organizes online or face-to-face training and workshops.                     
+                        La Pâtisserie Numérique organizes online or face-to-face training and workshops.
                     </p>
                     <p className={classes.paragraph}>
                         Following numerous requests, we offer 100% online training to make your own silicone molds using 3d printing. This training is based on our experience and does not require any special skills in 3d modeling. Beginners are welcome!
@@ -38,10 +38,10 @@ const Trainings = () => {
 
                 <div className={classes['header-imgContainer']}>
                     <div>
-                        <img src={pic1} alt=''/>
+                        <img src={pic1} alt='' />
                     </div>
                     <div>
-                        <img src={pic2} alt=''/>
+                        <img src={pic2} alt='' />
                     </div>
                 </div>
             </header>
@@ -59,13 +59,13 @@ const Trainings = () => {
                         </ul>
                     </div>
 
-                    { state === 'all' ? <div className={classes['trainings-section']}>
+                    {state === 'all' ? <div className={classes['trainings-section']}>
                         <div className={classes.cell}>
                             <h3 className={classes['trainings-title']}>Featured</h3>
                             <div className={classes['description-container']}>
                                 {data.Featured.map((item, index) => {
                                     return (
-                                        <Item item={item} key={index}/>
+                                        <Item item={item} key={index} />
                                     )
                                 })}
                             </div>
@@ -77,7 +77,7 @@ const Trainings = () => {
                             <div className={classes['description-container']}>
                                 {data.Petiss.map((item, index) => {
                                     return (
-                                        <Item item={item} key={index}/>
+                                        <Item item={item} key={index} />
                                     )
                                 })}
                             </div>
@@ -89,39 +89,39 @@ const Trainings = () => {
                             <div className={classes['description-container']}>
                                 {data.Cakewalk.map((item, index) => {
                                     return (
-                                        <Item item={item} key={index}/>
+                                        <Item item={item} key={index} />
                                     )
                                 })}
                             </div>
                         </div>
-                        
+
                     </div> : undefined}
-                    
-                    { state === 'petiss' ? <div className={classes['trainings-section']}>
+
+                    {state === 'petiss' ? <div className={classes['trainings-section']}>
                         <div className={classes.cell}>
                             <h3 className={classes['trainings-title']}>Petiss3</h3>
                             <div className={classes['description-container']}>
                                 {data.Petiss.map((item, index) => {
                                     return (
-                                        <Item item={item} key={index}/>
+                                        <Item item={item} key={index} />
                                     )
                                 })}
                             </div>
                         </div>
-                    </div> : undefined} 
+                    </div> : undefined}
 
-                    { state === 'cakewalk' ? <div className={classes['trainings-section']}>
+                    {state === 'cakewalk' ? <div className={classes['trainings-section']}>
                         <div className={classes.cell}>
                             <h3 className={classes['trainings-title']}>Cakewalk</h3>
                             <div className={classes['description-container']}>
                                 {data.Cakewalk.map((item, index) => {
                                     return (
-                                        <Item item={item} key={index}/>
+                                        <Item item={item} key={index} />
                                     )
                                 })}
                             </div>
                         </div>
-                    </div> : undefined}             
+                    </div> : undefined}
 
                 </div>
             </section>
@@ -132,7 +132,7 @@ const Trainings = () => {
 export default Trainings
 
 export const loader = async () => {
-    const data = await fetch('https://cake-shop-trainings-38272-default-rtdb.firebaseio.com/store.json')
+    const data = await fetch('https://trainings-ffda3-default-rtdb.firebaseio.com/store.json')
     const response = await data.json()
 
     return response

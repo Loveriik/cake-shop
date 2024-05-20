@@ -6,7 +6,7 @@ import Item from './Item'
 
 const Shop = () => {
     const data = useLoaderData()
-    const [ title, setTitle ] = useState('all')
+    const [title, setTitle] = useState('all')
 
     const titleHandler = (title) => {
         setTitle(title)
@@ -30,13 +30,13 @@ const Shop = () => {
                     </ul>
                 </div>
 
-                <div className={classes['grid-container']}> 
-                    {title === 'all' && data.map((item, index) => <Item item={item} key={index}/>)}
-                    {title === 'patiss3' && patiss3Data.map((item, index) => <Item item={item} key={index}/>)}
-                    {title === 'cakewalk' && cakewalkData.map((item, index) => <Item item={item} key={index}/>)}
-                    {title === 'kit' && kitData.map((item, index) => <Item item={item} key={index}/>)}
+                <div className={classes['grid-container']}>
+                    {title === 'all' && data.map((item, index) => <Item item={item} key={index} />)}
+                    {title === 'patiss3' && patiss3Data.map((item, index) => <Item item={item} key={index} />)}
+                    {title === 'cakewalk' && cakewalkData.map((item, index) => <Item item={item} key={index} />)}
+                    {title === 'kit' && kitData.map((item, index) => <Item item={item} key={index} />)}
                 </div>
-                
+
             </div>
         </section>
     )
@@ -46,7 +46,7 @@ export default Shop
 
 
 export const loader = async () => {
-    const response = await fetch('https://cake-shop3-default-rtdb.firebaseio.com/shop.json')
+    const response = await fetch('https://cake-shop1-default-rtdb.firebaseio.com/shop.json')
     const data = await response.json()
 
     return data.items
