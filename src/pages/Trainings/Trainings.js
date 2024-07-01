@@ -132,7 +132,7 @@ const Trainings = () => {
 export default Trainings
 
 export const loader = async () => {
-    const data = await fetch('https://trainings-ffda3-default-rtdb.firebaseio.com/store.json')
+    const data = await fetch('https://cake-trainings-default-rtdb.firebaseio.com/store.json')
     const response = await data.json()
 
     return response
